@@ -1,11 +1,18 @@
-import React from "react";
-import logo from "./images/aumni-logo.png";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import mockFunds from './mocks/funds.json';
+import logo from './images/aumni-logo.png';
+import './css/App.css';
 
-function App() {
+const App = () => {
+  const [funds, setFunds] = useState([]);
+
+  useEffect( () => {
+    setFunds(mockFunds)
+  }, []);
+
   return (
-    <div style={{ textAlign: "center" }}>
-      <img src={logo} alt="Aumni Logo" />
+    <div className='body'>
+      <img src={logo} alt='Aumni Logo' />
       <h1>Aumni Frontend Coding Challenge</h1>
     </div>
   );
