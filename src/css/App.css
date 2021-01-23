@@ -1,4 +1,12 @@
 .body {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+.logo {
+  width: 30%;
+}
+
+.fundName {
+  font-size: 3vw;
+}

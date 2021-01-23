@@ -9,7 +9,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/1.svg",
         "cost": 1700000,
         "ownershipPercentage": 0.34,
-        "impliedValue": 5700000,
+        "value": 5700000,
         "founded": "2020-05-10"
       },
       {
@@ -18,7 +18,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/2.svg",
         "cost": 3500000,
         "ownershipPercentage": 0.12,
-        "impliedValue": 10000000,
+        "value": 10000000,
         "founded": "2018-10-17"
       },
       {
@@ -27,7 +27,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/3.svg",
         "cost": 500000,
         "ownershipPercentage": 0.05,
-        "impliedValue": 1500000,
+        "value": 1500000,
         "founded": "2015-01-01"
       }
     ]
@@ -42,7 +42,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/4.svg",
         "cost": 250000,
         "ownershipPercentage": 0.12,
-        "impliedValue": 2000000,
+        "value": 2000000,
         "founded": "2017-03-14"
       },
       {
@@ -51,7 +51,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/5.svg",
         "cost": 3500000,
         "ownershipPercentage": 0.35,
-        "impliedValue": 10000000,
+        "value": 10000000,
         "founded": "2018-12-27"
       }
     ]
@@ -66,7 +66,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/6.svg",
         "cost": 100000,
         "ownershipPercentage": 0.23,
-        "impliedValue": 500000,
+        "value": 500000,
         "founded": "2004-10-11"
       },
       {
@@ -75,7 +75,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/7.svg",
         "cost": 5000000,
         "ownershipPercentage": 0.29,
-        "impliedValue": 7500000,
+        "value": 7500000,
         "founded": "2013-06-14"
       },
       {
@@ -84,7 +84,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/8.svg",
         "cost": 150000,
         "ownershipPercentage": 0.46,
-        "impliedValue": 500000,
+        "value": 500000,
         "founded": "2018-11-09"
       },
       {
@@ -93,7 +93,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/9.svg",
         "cost": 600000,
         "ownershipPercentage": 0.02,
-        "impliedValue": 1200000,
+        "value": 1200000,
         "founded": "2013-10-19"
       },
       {
@@ -102,7 +102,7 @@
         "logo": "https://aumni-public.s3.amazonaws.com/fake-logos-vector-color/10.svg",
         "cost": 360000,
         "ownershipPercentage": 0.28,
-        "impliedValue": 780000,
+        "value": 780000,
         "founded": "2005-09-05"
       }
     ]
