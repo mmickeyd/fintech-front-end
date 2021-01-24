@@ -77,3 +77,37 @@ describe('PieMultiple', () => {
   });
 
 });
+
+describe('BarEquity', () => {
+
+  test('contains bar graph section', () => {
+    const { getByTestId } = render(<BarEquity fund={firm} />);
+    const barGraphSection = getByTestId(/^bar$/i);
+    expect(barGraphSection).toBeInTheDocument();
+  });
+
+  test('renders bar graph', () => {
+    render(<BarEquity fund={firm} />);
+    const barGraph = document.getElementsByClassName('barContainer')[0];
+    expect(barGraph).toBeInTheDocument();
+  });
+
+  test('renders keys', () => {
+    const { getByText } = render(<BarEquity fund={firm} />);
+    const key1 = getByText(/^equity possessed$/i);
+    const key2 = getByText(/^remaining equity$/i);
+    expect(key1).toBeInTheDocument();
+    expect(key2).toBeInTheDocument();
+  });
+
+  test('renders rectangles for keys', () => {
+    render(<BarEquity fund={firm} />);
+    const greenRectangle = document.getElementsByTagName('rect')[0];
+    const purpleRectangle = document.getElementsByTagName('rect')[1];
+    expect(greenRectangle).toBeInTheDocument();
+    expect(purpleRectangle).toBeInTheDocument();
+    expect(greenRectangle).toHaveStyle('fill: #93dcae');
+    expect(purpleRectangle).toHaveStyle('fill: #9a95f1');
+  });
+
+});
