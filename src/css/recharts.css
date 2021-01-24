@@ -1,0 +1,16 @@
+.recharts-label {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.recharts-xAxis {
+  font-size: 1.5vw;
+}
+
+.container {
+  margin-top: -1.5vw;
+}
+
+.barContainer {
+  margin: 1.5vw 0;
+}
