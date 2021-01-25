@@ -47,7 +47,7 @@ export const Image = styled.img`
   height: 8vw;
   box-shadow: 2px 3px 4px 4px #000000;
   border-radius: 8px;
-
+  background-color: white;
 `;
 
 export const Logo = styled.div`
