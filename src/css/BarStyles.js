@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+import { ResponsiveContainer } from 'recharts';
+
+export const Container = styled(ResponsiveContainer)`
+  margin: 1.5vw 0;
+  min-width: 1px;
+  min-height: 1px;
+`;
 
 export const BarGraphs = styled.div`
   display: grid;
@@ -16,7 +23,9 @@ export const BarKeys = styled.div`
   align-items: center;
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  margin-right: 3vw;
+  margin-right: 5vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const CompanyFunds = styled.div`
