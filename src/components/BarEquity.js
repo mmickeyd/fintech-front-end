@@ -1,62 +1,44 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { BarGraphs, BarKeys, CompanyFunds, Key, PurpleRectangle, GreenRectangle, VectorRectangle } from '../css/BarStyles';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { Container, BarGraphs, BarKeys, CompanyFunds, Key, PurpleRectangle, GreenRectangle, VectorRectangle } from '../css/BarStyles';
 import '../css/recharts.css';
-
-const addUnownedEquity = (company) => {
-    company['Equity Possessed'] = Math.round(company.equity * 100);
-    company['Remaining Equity'] = (100 - company['Equity Possessed']);
-    return [company];
-}
-
-const darkenBar = (id) => {
-  const bar = document.getElementsByClassName(`${id}-bar`);
-  bar[1].style.fill = '#242248';
-  bar[3].style.fill = '#264030';
-}
-
-const lightenBar = (id) => {
-  const bar = document.getElementsByClassName(`${id}-bar`);
-  bar[1].style.fill = '#9a95f1';
-  bar[3].style.fill = '#93dcae';
-}
-
+import { addUnownedEquity, darkenBar, lightenBar } from '../helperFunctions.js';
 
 const BarEquity = (props) => {
   const companies = props.fund.companies;
 
   return (
     <BarGraphs>
-    <CompanyFunds>
+    <CompanyFunds data-testid='bar'>
       {companies.map(company =>
-        <ResponsiveContainer aspect={1} width='30%' height='auto' className='barContainer' key={company.id} >
-          <BarChart className='GOWILDFAM'
+        <Container className='barContainer' height='auto' width='30%' aspect={1} key={company.id}
+          >
+          <BarChart
             width='30%'
             data={addUnownedEquity(company)}
-            margin={{
-              top: 20, right: 30, left: 20, bottom: 5,
-            }}>
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
             <CartesianGrid strokeDasharray='2 2' />
             <XAxis dataKey='name'/>
             <YAxis />
             <Tooltip />
             <Bar
-            dataKey='Equity Possessed'
-            stackId='a'
-            fill='#9a95f1'
-            className={`${company.id}-bar`}
-            onMouseOver={ () => darkenBar(company.id) }
-            onMouseOut={ () => lightenBar(company.id) }
+              dataKey='Equity Possessed'
+              stackId='a'
+              fill='#9a95f1'
+              className={`${company.id}-bar`}
+              onMouseOver={ () => darkenBar(company.id) }
+              onMouseOut={ () => lightenBar(company.id) }
             />
             <Bar
-            dataKey='Remaining Equity'
-            stackId='a' fill='#93dcae'
-            className={`${company.id}-bar`}
-            onMouseOver={ () => darkenBar(company.id) }
-            onMouseOut={ () => lightenBar(company.id) }
+              dataKey='Remaining Equity'
+              stackId='a' fill='#93dcae'
+              className={`${company.id}-bar bargph`}
+              onMouseOver={ () => darkenBar(company.id) }
+              onMouseOut={ () => lightenBar(company.id) }
             />
           </BarChart>
-        </ResponsiveContainer>
+        </Container>
       )}
     </CompanyFunds>
     <BarKeys>
@@ -64,13 +46,13 @@ const BarEquity = (props) => {
           <VectorRectangle>
             <GreenRectangle/>
           </VectorRectangle>
-          Remaining Equity
+          Remaining Equity (%)
         </Key>
         <Key>
           <VectorRectangle>
             <PurpleRectangle/>
           </VectorRectangle>
-          Equity Possessed
+          Equity Possessed (%)
         </Key>
       </BarKeys>
     </BarGraphs>
