@@ -94,3 +94,7 @@ export const Label = styled.text`
   fill: white;
   font-size: 1.1vw;
 `
+export const CustomKey = styled(Key)`
+  font-size: 2vw
+
+`;

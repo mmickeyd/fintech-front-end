@@ -14,6 +14,10 @@ export const BarGraphs = styled.div`
   margin-top: 10vw;
 `;
 
+export const SingleBar = styled.div`
+  width: 20vw
+`;
+
 export const BarKeys = styled.div`
   display: flex;
   flex-direction: column;
