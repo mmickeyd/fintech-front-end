@@ -1,38 +1,47 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { PieGraphs, PieKeys, PieSection, CompanyName, CompanyFunds, Key, BlueRect, RedRect, VectorRect, ROI, ROISection, Label } from '../css/PieStyles';
+import { PieChart, Pie, Cell } from 'recharts';
+import { PieGraphs, PieKeys, PieSection, Container, CompanyName, CompanyFunds, Key, BlueRectangle, RedRectangle, VectorRectangle, ROI, ROISection, Label } from '../css/PieStyles';
+import PieChartGenerator from './PieChartGenerator';
 
-const colors = ['#0088FE', '#D20000'];
+const colors = ['#4babff', '#ff5656'];
 const radian = Math.PI / 180;
 
-// ------------------ CSS MODIFIERS ------------------ //
+// ------------------ PIE CSS MODIFIERS ------------------ //
 
 const darkenPie = (name, id) => {
   document.getElementById(id).style.fill = '#003a6d';
   document.getElementsByClassName(name)[2].style.fill = '#580000';
-  document.getElementsByClassName(`${id}-ROI`)[0].style.visibility = 'visible';
+  const roiBlock = document.getElementsByClassName(`${id}-roi`)[0].style
+  roiBlock.visibility = 'visible';
+  roiBlock.opacity = 1;
 };
 
 const undarkenPie = (name, id) => {
-  document.getElementById(id).style.fill = '#0088fe';
-  document.getElementsByClassName(name)[2].style.fill = '#d20000';
-  document.getElementsByClassName(`${id}-ROI`)[0].style.visibility = 'collapse';
+  document.getElementById(id).style.fill = '#4babff';
+  document.getElementsByClassName(name)[2].style.fill = '#ff5656';
+  const roiBlock = document.getElementsByClassName(`${id}-roi`)[0].style
+  roiBlock.visibility = 'hidden';
+  roiBlock.opacity = 0;
 }
 
 const keepHoverProperties = (event, id) => {
-  document.getElementsByClassName(`${id}-ROI`)[0].style.visibility = 'visible';
+  const roiBlock = document.getElementsByClassName(`${id}-roi`)[0].style
   const piePieceOne = event.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].style;
   const piePieceTwo = event.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].style;
   piePieceOne.fill = '#003a6d';
   piePieceTwo.fill = '#580000';
+  roiBlock.visibility = 'visible';
+  roiBlock.opacity = 1;
 }
 
 const hideHoverProperties = (event, id) => {
-  document.getElementsByClassName(`${id}-ROI`)[0].style.visibility = 'collapse';
+  const roiBlock = document.getElementsByClassName(`${id}-roi`)[0].style
   const piePieceOne = event.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].style;
   const piePieceTwo = event.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[0].style;
-  piePieceOne.fill = '#0088fe';
-  piePieceTwo.fill = '#d20000';
+  piePieceOne.fill = '#4babff';
+  piePieceTwo.fill = '#ff5656';
+  roiBlock.visibility = 'hidden';
+  roiBlock.opacity = 0;
 }
 
 // --------------- NUMBER/STRING ALGOS --------------- //
@@ -105,70 +114,38 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const MultiplePie = (props) => {
+const PieChartSection = (props) => {
   const companies = props.fund.companies;
-  const data = addSecondObject(companies);
-  let index = 0;
-
-  const increaseIndex = (i) => {
-    index += i;
-    return '';
-  }
 
   return (
     <PieGraphs>
-      <PieKeys>
-        <Key>
-          <VectorRect>
-            <BlueRect/>
-          </VectorRect>
-          Implied Value
-        </Key>
-        <Key>
-          <VectorRect>
-            <RedRect/>
-          </VectorRect>
-          Cost
-        </Key>
-      </PieKeys>
       <CompanyFunds>
       {companies.map(company =>
-        <PieSection key={company.id}>
+        <PieSection key={company.id} data-testid='pieChart'>
         <CompanyName>{company.name}</CompanyName>
-          <ResponsiveContainer height='22vw' aspect={1}>
-            <PieChart>
-              <Pie
-                className={`${company.name}`}
-                data={data[index]}
-                labelLine={false}
-                label={renderCustomizedLabel}
-                outerRadius='80%'
-                fill='#8884d8'
-                dataKey='pie'
-                onMouseOver={ () => darkenPie(company.name, company.id) }
-                onMouseOut={ () => undarkenPie(company.name, company.id) }
-                >
-                { data.map((entry, index) =>
-                    <Cell
-                    dataKey='pie'
-                    key={`cell-${index}`}
-                    fill={colors[index % colors.length]}
-                  />
-                )}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-          {increaseIndex(1)}
+        <PieChartGenerator company={company} />
           <ROISection>
-            <ROI className={`${company.id}-ROI`}>{findROI(company.value, company.cost)}</ROI>
+            <ROI className={`${company.id}-roi`}>{findROI(company.value, company.cost)}</ROI>
           </ROISection>
           </PieSection>
       )}
       </CompanyFunds>
+      <PieKeys>
+        <Key>
+          <VectorRectangle>
+            <BlueRectangle/>
+          </VectorRectangle>
+          Implied Value
+        </Key>
+        <Key>
+          <VectorRectangle>
+            <RedRectangle/>
+          </VectorRectangle>
+          Cost
+        </Key>
+      </PieKeys>
     </PieGraphs>
   );
 }
 
-export default MultiplePie;
-
-
+export default PieChartSection;
