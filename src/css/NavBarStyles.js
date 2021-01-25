@@ -49,7 +49,7 @@ export const FirstNavButton = styled(NavButton)`
 `;
 
 export const NavText = styled.p`
-  margin-top: .9vw;
+  margin-top: .8vw;
 `;
 
 export const HomeNavText = styled.p`
