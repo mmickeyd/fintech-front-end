@@ -1,6 +1,6 @@
 import React from 'react';
 import BarGraphGenerator from './BarGraphGenerator';
-import { BarGraphs, BarKeys, CompanyFunds, Key, PurpleRectangle, GreenRectangle, VectorRectangle } from '../css/BarStyles';
+import { BarGraphs, BarKeys, CompanyFunds, Key, PurpleRectangle, GreenRectangle, VectorRectangle, SingleBar } from '../css/BarStyles';
 import '../css/recharts.css';
 
 const BarEquitySection = (props) => {
@@ -10,7 +10,9 @@ const BarEquitySection = (props) => {
     <BarGraphs>
     <CompanyFunds data-testid='bar'>
       {companies.map(company =>
-      <BarGraphGenerator company={company} />
+      <SingleBar key={company.id} width='20vw'>
+      <BarGraphGenerator company={company} key={company.id} />
+      </SingleBar>
       )}
     </CompanyFunds>
     <BarKeys>
@@ -32,6 +34,3 @@ const BarEquitySection = (props) => {
 }
 
 export default BarEquitySection;
-
-
-// purp #242248  green #264030

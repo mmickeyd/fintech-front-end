@@ -66,6 +66,32 @@ export const convertNumber = (value) => {
 
   (num[1] === '.' || num[2] === '.') && !Number(num[num.length - 2]) ? num = num.split('.').join('') : num = num.slice(0);
   return num;
+};
+
+export const convertNumToMonth = (month) => {
+  let result =
+    month === 1 ? 'Jan' :
+    month === 2 ? 'Feb' :
+    month === 3 ? 'Mar' :
+    month === 4 ? 'Apr' :
+    month === 5 ? 'May' :
+    month === 6 ? 'Jun' :
+    month === 7 ? 'Jul' :
+    month === 8 ? 'Aug' :
+    month === 9 ? 'Sep' :
+    month === 10 ? 'Oct' :
+    month === 11 ? 'Nov' :
+    month === 12 ? 'Dec' : null;
+  return result;
+};
+
+export const convertDate = (date) => {
+  const dateSplit = date.split('-');
+  const year = dateSplit[0];
+  const month = convertNumToMonth(Number(dateSplit[1]));
+  let day = dateSplit[2];
+  day[0] === '0' ? day = day[1] : day = day.slice(0);
+  return `${month} ${day}, ${year}`;
 }
 
 // ------------------ PIE ASSIST ALGOS ------------------ //
@@ -104,7 +130,7 @@ export const findROI = (implied, cost) => {
   return multiple += 'x ROI';
 }
 
-// ------------------ BAR ASSIST ALGOS ------------------ //
+// ------------------ BAR GRAPH ASSIST ALGOS ------------------ //
 
 export const addUnownedEquity = (company) => {
   company['Equity Possessed'] = Math.round(company.equity * 100);
@@ -112,7 +138,7 @@ export const addUnownedEquity = (company) => {
   return [company];
 }
 
-// ------------------ BAR CSS MODIFIERS ------------------ //
+// ------------------ BAR GRAPH CSS MODIFIERS ------------------ //
 
 export const darkenBar = (id) => {
 const bar = document.getElementsByClassName(`${id}-bar`);
@@ -125,5 +151,3 @@ const bar = document.getElementsByClassName(`${id}-bar`);
 bar[1].style.fill = '#9a95f1';
 bar[3].style.fill = '#93dcae';
 }
-
-// ------------------------------------------------------- //

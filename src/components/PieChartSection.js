@@ -1,7 +1,6 @@
 import React from 'react';
-import { PieGraphs, PieKeys, PieSection, CompanyName, CompanyFunds, Key, BlueRectangle, RedRectangle, VectorRectangle, ROI, ROISection } from '../css/PieStyles';
+import { PieGraphs, PieKeys, PieSection, CompanyName, CompanyFunds, Key, BlueRectangle, RedRectangle, VectorRectangle } from '../css/PieStyles';
 import PieChartGenerator from './PieChartGenerator';
-import { findROI } from '../helperFunctions.js';
 
 const PieChartSection = (props) => {
   const companies = props.fund.companies;
@@ -9,15 +8,12 @@ const PieChartSection = (props) => {
   return (
     <PieGraphs>
       <CompanyFunds>
-      {companies.map(company =>
-        <PieSection key={company.id} data-testid='pieChart'>
-        <CompanyName>{company.name}</CompanyName>
-        <PieChartGenerator company={company} />
-          <ROISection>
-            <ROI className={`${company.id}-roi`}>{ findROI(company.value, company.cost) }</ROI>
-          </ROISection>
+        {companies.map(company =>
+          <PieSection key={company.id} data-testid='pieChart'>
+          <CompanyName>{company.name}</CompanyName>
+          <PieChartGenerator company={company} />
           </PieSection>
-      )}
+        )}
       </CompanyFunds>
       <PieKeys>
         <Key>

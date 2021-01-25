@@ -1,15 +1,14 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { addUnownedEquity, darkenBar, lightenBar } from '../helperFunctions.js';
+import { addUnownedEquity, darkenBar, lightenBar } from '../helperFunctions';
 import { Container } from '../css/BarStyles';
-import '../css/recharts.css';
 
 const BarGraphGenerator = (props) => {
   const company = props.company;
   return (
     <Container
       className='barContainer'
-      height='auto' width='30%'
+      height='auto'
       aspect={1}
       key={company.id}
       >

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
-import { Container } from '../css/PieStyles';
-import { darkenPie, undarkenPie, addSecondObject, renderCustomizedLabel } from '../helperFunctions.js'
+import { Container, ROI, ROISection } from '../css/PieStyles';
+import { findROI, darkenPie, undarkenPie, addSecondObject, renderCustomizedLabel } from '../helperFunctions.js'
 
 const PieChartGenerator = (props) => {
   const company = props.company;
@@ -33,6 +33,9 @@ const PieChartGenerator = (props) => {
           </Pie>
         </PieChart>
     </Container>
+    <ROISection>
+      <ROI className={`${company.id}-roi`}>{ findROI(company.value, company.cost) }</ROI>
+    </ROISection>
   </div>
   );
 };

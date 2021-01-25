@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Divider, EquityLabel, RoiLabel, FirmGraphs, FirmName } from '../css/AppStyles';
-import PieMultiple from './PieMultiple';
-import BarEquity from './BarEquity';
+import React from 'react';
+import { Divider, EquityLabel, RoiLabel, FirmGraphs, FirmName } from '../css/HomeStyles';
+import PieChartSection from './PieChartSection';
+import BarEquitySection from './BarEquitySection';
 
 
 const Home = (props) => {
   const funds = props.funds;
-  // const [funds, setFunds] = useState([]);
-
-  // useEffect((props) => {
-  //   setFunds(props.funds);
-  // }, []);
 
   return (
-    <div>
+    <div data-testid='home'>
       {funds.map(fund =>
-        <FirmGraphs key={fund.id} >
+        <FirmGraphs key={fund.id} data-testid='firmGraphs'>
           <FirmName>{fund.name}</FirmName>
           <RoiLabel>Return on Investment</RoiLabel>
-          <PieMultiple fund={fund} />
+          <PieChartSection fund={fund} />
           <Divider/>
-          <EquityLabel>Equity (%)</EquityLabel>
-          <BarEquity fund={fund} />
+          <EquityLabel>Equity</EquityLabel>
+          <BarEquitySection fund={fund} />
         </FirmGraphs>
       )}
     </div>

@@ -14,8 +14,6 @@ const NavigationBar = (props) => {
 
   const states = [haneandsons, windler, home, olson, kings];
   const stateStrings = ['haneandsons', 'windler', 'home', 'olson', 'kings'];
-  let lastButton = 'home';
-
 
   const toggleButton = (classname) => {
     let previous;
@@ -31,14 +29,14 @@ const NavigationBar = (props) => {
     toggleOff.childNodes[0].style.color = '#060d41';
   }
 
-  const toggleState = (changeState, classname, previous) => {
+  const toggleState = (changeState, classname) => {
     setHaneAndSons(false);
     setWindler(false);
     setHome(false);
     setOlson(false);
     setKings(false);
     changeState(true);
-    toggleButton(classname, previous)
+    toggleButton(classname);
   }
 
   return (
@@ -47,35 +45,36 @@ const NavigationBar = (props) => {
           <FirstNavButton
             to='/haneandsons'
             className='haneandsons'
-            onClick={ () => toggleState(setHaneAndSons, 'haneandsons', lastButton) }
+            onClick={ () => toggleState(setHaneAndSons, 'haneandsons') }
             >
             <NavText>Hane and Sons Ventures</NavText>
           </FirstNavButton>
           <NavButton
             to='/windler'
             className='windler'
-            onClick={ () => toggleState(setWindler, 'windler', lastButton) }
+            onClick={ () => toggleState(setWindler, 'windler') }
             >
             <NavText>Windler Group</NavText>
           </NavButton>
           <HomeNavButton
             to='/'
+            data-testid='fundPage'
             className='home'
-            onClick={ () => toggleState(setHome, 'home', lastButton) }
+            onClick={ () => toggleState(setHome, 'home') }
             >
             <HomeNavText>Home</HomeNavText>
           </HomeNavButton>
           <NavButton
             to='/olson'
             className='olson'
-            onClick={ () => toggleState(setOlson, 'olson', lastButton) }
+            onClick={ () => toggleState(setOlson, 'olson') }
             >
             <NavText>Olson Ventures</NavText>
           </NavButton>
           <NavButton
             to='/kings'
             className='kings'
-            onClick={ () => toggleState(setKings, 'kings', lastButton) }
+            onClick={ () => toggleState(setKings, 'kings') }
             >
             <NavText>Kings Capital</NavText>
           </NavButton>
